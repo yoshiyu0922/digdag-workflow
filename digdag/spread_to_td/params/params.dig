@@ -1,0 +1,11 @@
+
+spread:
+  json_keyfile: ./spread_to_td/keyfile/keyfile.json
+  spreadsheets_url: 
+  worksheet_title: history
+
+td:
+  endpoint: api.treasuredata.com
+  database: sample
+  table: history
+  mode: replace

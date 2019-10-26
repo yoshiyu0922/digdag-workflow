@@ -1,0 +1,31 @@
+in:
+  type: google_spreadsheets
+  auth_method: service_account
+  json_keyfile: {{ env.json_keyfile }}
+  spreadsheets_url: {{ env.spreadsheets_url }}
+  worksheet_title: {{ env.worksheet_title }}
+  start_row: 2
+  columns:
+    - { name: date, type: timestamp, format: "%Y-%m-%d" }
+    - { name: category, type: string }
+    - { name: payment_method, type: string }
+    - { name: amount, type: long, typecast: loose}
+    - { name: content, type: string }
+filters:
+  - type: add_time
+    to_column:
+      name: created_at
+      type: timestamp
+    from_value:
+      mode: upload_time
+
+out:
+  # type: stdout
+  type: td
+  apikey: {{ env.td_apikey }}
+  endpoint: {{ env.endpoint }}
+  database: {{ env.database }}
+  table: {{ env.table }}
+  time_column: created_at
+  mode: {{ env.mode}}
+  default_timestamp_format: '%Y-%m-%d %H:%M:%S'

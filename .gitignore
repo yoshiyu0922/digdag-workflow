@@ -1,0 +1,14 @@
+/.digdag-wrapper
+.digdag
+*.pyc
+
+# Mac
+.DS_Store
+
+# intelliJ
+.idea
+*.iml
+
+# workflow
+keyfile.json
+setup.txt

@@ -1,0 +1,15 @@
+timezone: Asia/Tokyo
+
+_export:
+  !include : spread_to_td/params/params.dig
+
++import:
+  _export: 
+    json_keyfile: ${ spread.json_keyfile }
+    spreadsheets_url: ${ spread.spreadsheets_url }
+    worksheet_title: ${ spread.worksheet_title }
+    endpoint: ${ td.endpoint }
+    database: ${ td.database }
+    table: ${ td.table }
+    mode: ${ td.mode }
+  sh>: td_apikey=${secret:td.apikey} embulk run ./spread_to_td/embulk/spread_to_td.yml.liquid
